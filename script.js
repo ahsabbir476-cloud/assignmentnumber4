@@ -18,6 +18,15 @@ let filteredSection = document.getElementById("filtered-section")
 // let totalJobscount = document.getElementById("jobCount")
 
 
+function toggleEmptyState(list) {
+    const emptyState = document.getElementById('emptyState');
+    if (list.length === 0) {
+        emptyState.classList.remove('hidden');
+    } else {
+        emptyState.classList.add('hidden');
+    }
+}
+
 function calculateCount() {
     totalNum.innerText = allBoxParent.children.length;
     interviewNum.innerText = interviewList.length;
@@ -44,12 +53,12 @@ function toggleEffect(id) {
     if (id == 'btn-interview') {
         allBoxParent.classList.add('hidden')
         filteredSection.classList.remove('hidden')
-        renderInterview() 
+        renderInterview()
     } else if (id == 'btn-all') {
         allBoxParent.classList.remove('hidden')
         filteredSection.classList.add('hidden')
-        renderInterview() 
-    } else if (id == 'btn-rejected'){
+        renderInterview()
+    } else if (id == 'btn-rejected') {
         allBoxParent.classList.add('hidden')
         filteredSection.classList.remove('hidden')
         renderRejected()
@@ -78,14 +87,13 @@ mainAll.addEventListener('click', function (event) {
         if (!companyExist) {
             interviewList.push(cardInfo)
         }
-        
+
         rejectedList = rejectedList.filter(item => item.companyName != cardInfo.companyName)
-        
-        if(currentStatus=='btn-rejected'){
+        if (currentStatus == 'btn-rejected') {
             renderRejected()
         }
         calculateCount()
-        
+
     } else if (event.target.classList.contains('btnRejected')) {
         const parentDiv = event.target.parentNode.parentNode;
         const companyName = parentDiv.querySelector('.companyname').innerText;
@@ -109,8 +117,7 @@ mainAll.addEventListener('click', function (event) {
 
 
         interviewList = interviewList.filter(item => item.companyName != cardInfo.companyName)
-        
-        if(currentStatus=='btn-interview'){
+        if (currentStatus == 'btn-interview') {
             renderInterview()
         }
         calculateCount()
@@ -118,7 +125,16 @@ mainAll.addEventListener('click', function (event) {
 })
 
 function renderInterview() {
-    filteredSection.innerHTML = ''
+    filteredSection.innerHTML = `
+  <div id="emptyState" class="hidden flex flex-col items-center justify-center py-16 text-center space-y-1">
+      <span class="" ><i class="fa-solid fa-file-lines text-7xl"></i></span>
+      <h3 class="text-lg font-semibold text-gray-700">No jobs available</h3>
+      <p class="text-sm text-gray-500">
+          Check back soon for new job opportunities
+      </p>
+  </div>
+`;
+    toggleEmptyState(interviewList);
 
     for (let interview of interviewList) {
         let div = document.createElement('div')
@@ -128,7 +144,7 @@ function renderInterview() {
                 <div>
                     <h2 class="companyname text-[20px] font-bold">${interview.companyName}</h2>
                     <p class="description text-gray-500 text-[16px]">${interview.description}</p>
-                    <p class="details pt-2 pb-2"></p>
+                    <p class="details pt-2 pb-2">${interview.details}</p>
                     <button class="status bg-gray-200 p-1.5 rounded-[2px]">${interview.status}</button>
                     <p class="description2 pt-1.5 pb-1.5">${interview.description2}</p>
                     <div class="flex gap-3">
@@ -144,8 +160,16 @@ function renderInterview() {
 }
 
 function renderRejected() {
-    filteredSection.innerHTML = ''
-
+    filteredSection.innerHTML = `
+  <div id="emptyState" class="hidden flex flex-col items-center justify-center py-16 text-center space-y-1">
+      <span class="" ><i class="fa-solid fa-file-lines text-7xl"></i></span>
+      <h3 class="text-lg font-semibold text-gray-700">No jobs available</h3>
+      <p class="text-sm text-gray-500">
+          Check back soon for new job opportunities
+      </p>
+  </div>
+`;
+    toggleEmptyState(rejectedList);
     for (let rejected of rejectedList) {
         let div = document.createElement('div')
         div.className = 'flex justify-between p-4 bg-white border rounded mb-4'
@@ -154,7 +178,7 @@ function renderRejected() {
                 <div>
                     <h2 class="companyname text-[20px] font-bold">${rejected.companyName}</h2>
                     <p class="description text-gray-500 text-[16px]">${rejected.description}</p>
-                    <p class="details pt-2 pb-2"></p>
+                    <p class="details pt-2 pb-2">${rejected.details}</p>
                     <button class="status bg-gray-200 p-1.5 rounded-[2px]">${rejected.status}</button>
                     <p class="description2 pt-1.5 pb-1.5">${rejected.description2}</p>
                     <div class="flex gap-3">
