@@ -10,9 +10,9 @@
 </head>
 
 <body class="bg-gray-100">
-    <header class="w-[80%] mx-auto">
-        <h2 class="text-4xl font-bold text-black pt-5 pb-2">Job Application Tracker</h2>
-        <div class="grid grid-cols-3 gap-8 pt-2">
+    <header class="w-full px-4 md:w-[80%] md:px-0 mx-auto">
+        <h2 class="text-2xl md:text-4xl font-bold text-black pt-5 pb-2">Job Application Tracker</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-2">
             <div class="bg-white p-4 rounded-[8px]">
                 <p>Total</p>
                 <p id="totalboxcount" class="text-2xl font-bold">0</p>
@@ -30,7 +30,7 @@
     <br>
     <hr>
     <br>
-    <div class="flex justify-between w-[80%] mx-auto">
+    <div class="flex flex-col gap-2 md:flex-row md:justify-between w-full px-4 md:w-[80%] md:px-0 mx-auto">
         <div>
             <h2 class="text-2xl font-bold">Avialable Jobs</h2>
         </div>
@@ -40,7 +40,7 @@
     </div>
     <br>
     <main id="main">
-        <div class="gap-3 flex w-[80%] mx-auto">
+        <div class="flex flex-wrap gap-2 w-full px-4 md:w-[80%] md:px-0 mx-auto">
             <button onclick="toggleEffect('btn-all')" id="btn-all"
                 class="bg-blue-500 px-7 py-2 rounded-[5px]">All</button>
             <button onclick="toggleEffect('btn-interview')" id="btn-interview"
@@ -49,13 +49,13 @@
                 class="bg-white px-6 py-2 rounded-[5px]">Recent</button>
         </div>
         <!-- filtered section -->
-        <section id="filtered-section" class="hidden w-[80%] mx-auto mt-4 space-y-7">
+        <section id="filtered-section" class="hidden w-full px-4 md:w-[80%] md:px-0 mx-auto mt-4 space-y-5">
 
         </section>
 
-        <section id="allbox" class="w-[80%] mx-auto mt-4 space-y-7">
+        <section id="allbox" class="w-full px-4 md:w-[80%] md:px-0 mx-auto mt-4 space-y-5">
             <!-- Card 1 -->
-            <div class="flex justify-between p-4 bg-white border rounded mb-4">
+            <div class="flex flex-col md:flex-row md:justify-between gap-4 p-4 bg-white border rounded mb-4">
                 <div>
                     <h2 class="companyname text-[20px] font-bold">TechNova Solutions</h2>
                     <p class="description text-gray-500 text-[16px]">Frontend Developer</p>
@@ -73,7 +73,7 @@
             </div>
 
             <!-- Card 2 -->
-            <div class="flex justify-between p-4 bg-white border rounded mb-4">
+            <div class="flex flex-col md:flex-row md:justify-between gap-4 p-4 bg-white border rounded mb-4">
                 <div>
                     <h2 class="companyname text-[20px] font-bold">CloudWave Inc</h2>
                     <p class="description text-gray-500 text-[16px]">React Native Developer</p>
@@ -83,7 +83,8 @@
                         Develop cross-platform mobile apps used by thousands of daily users.
                     </p>
                     <div class="flex gap-3">
-                        <button class=" btnInterview text-green-500 p-3 border rounded-[5px]">INTERVIEW</button>
+                        <button
+                            class=" btnInterview text-green-500 px-3 py-2 text-sm md:text-base border rounded">INTERVIEW</button>
                         <button class="btnRejected text-red-500 p-3 border rounded-[5px]">REJECTED</button>
                     </div>
                 </div>
@@ -91,7 +92,7 @@
             </div>
 
             <!-- Card 3 -->
-            <div class="flex justify-between p-4 bg-white border rounded mb-4">
+            <div class="flex flex-col md:flex-row md:justify-between gap-4 p-4 bg-white border rounded mb-4">
                 <div>
                     <h2 class="companyname text-[20px] font-bold">ByteForge Ltd</h2>
                     <p class="description text-gray-500 text-[16px]">Backend Developer</p>
@@ -109,7 +110,7 @@
             </div>
 
             <!-- Card 4 -->
-            <div class="flex justify-between p-4 bg-white border rounded mb-4">
+            <div class="flex flex-col md:flex-row md:justify-between gap-4 p-4 bg-white border rounded mb-4">
                 <div>
                     <h2 class="companyname text-[20px] font-bold">PixelCraft Studio</h2>
                     <p class="description text-gray-500 text-[16px]">UI/UX Designer</p>
@@ -127,7 +128,7 @@
             </div>
 
             <!-- Card 5 -->
-            <div class="flex justify-between p-4 bg-white border rounded mb-4">
+            <div class="flex flex-col md:flex-row md:justify-between gap-4 p-4 bg-white border rounded mb-4">
                 <div>
                     <h2 class="companyname text-[20px] font-bold">DataNest Analytics</h2>
                     <p class="description text-gray-500 text-[16px]">Data Analyst</p>
@@ -145,7 +146,7 @@
             </div>
 
             <!-- Card 6 -->
-            <div class="flex justify-between p-4 bg-white border rounded mb-4">
+            <div class="flex flex-col md:flex-row md:justify-between gap-4 p-4 bg-white border rounded mb-4">
                 <div>
                     <h2 class="companyname text-[20px] font-bold">NextGen Soft</h2>
                     <p class="description text-gray-500 text-[16px]">Full Stack Developer</p>
@@ -163,7 +164,7 @@
             </div>
 
             <!-- Card 7 -->
-            <div class="flex justify-between p-4 bg-white border rounded mb-4">
+            <div class="flex flex-col md:flex-row md:justify-between gap-4 p-4 bg-white border rounded mb-4">
                 <div>
                     <h2 class="companyname text-[20px] font-bold">SecureLink Systems</h2>
                     <p class="description text-gray-500 text-[16px]">Cyber Security Engineer</p>
@@ -181,7 +182,7 @@
             </div>
 
             <!-- Card 8 -->
-            <div class="flex justify-between p-4 bg-white border rounded mb-4">
+            <div class="flex flex-col md:flex-row md:justify-between gap-4 p-4 bg-white border rounded mb-4">
                 <div>
                     <h2 class="companyname text-[20px] font-bold">AI Horizon</h2>
                     <p class="description text-gray-500 text-[16px]">Machine Learning Engineer</p>
