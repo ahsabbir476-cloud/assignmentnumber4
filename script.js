@@ -40,12 +40,15 @@ function toggleEffect(id) {
     if (id == 'btn-interview') {
         allBoxParent.classList.add('hidden')
         filteredSection.classList.remove('hidden')
+        renderInterview() 
     } else if (id == 'btn-all') {
         allBoxParent.classList.remove('hidden')
         filteredSection.classList.add('hidden')
+        renderInterview() 
     } else if (id == 'btn-rejected'){
         allBoxParent.classList.add('hidden')
         filteredSection.classList.remove('hidden')
+        renderRejected()
     }
 }
 
@@ -75,7 +78,31 @@ mainAll.addEventListener('click', function (event) {
         rejectedList = rejectedList.filter(item => item.companyName != cardInfo.companyName)
         calculateCount()
         renderInterview()
-    } 
+    } else if (event.target.classList.contains('btnRejected')) {
+        const parentDiv = event.target.parentNode.parentNode;
+        const companyName = parentDiv.querySelector('.companyname').innerText;
+        const description = parentDiv.querySelector('.description').innerText;
+        const details = parentDiv.querySelector('.details').innerText;
+        let status = parentDiv.querySelector('.status').innerText;
+        const description2 = parentDiv.querySelector('.description2').innerText;
+        parentDiv.querySelector('.status').innerText = 'Rejected'
+        const cardInfo = {
+            companyName,
+            description,
+            details,
+            status: 'Rejected',
+            description2
+        }
+
+        const companyExist = rejectedList.find(item => item.companyName == cardInfo.companyName);
+        if (!companyExist) {
+            rejectedList.push(cardInfo)
+        }
+
+
+        interviewList = interviewList.filter(item => item.companyName != cardInfo.companyName)
+        calculateCount()
+    }
 })
 
 function renderInterview() {
@@ -92,6 +119,32 @@ function renderInterview() {
                     <p class="details pt-2 pb-2"></p>
                     <button class="status bg-gray-200 p-1.5 rounded-[2px]">${interview.status}</button>
                     <p class="description2 pt-1.5 pb-1.5">${interview.description2}</p>
+                    <div class="flex gap-3">
+                        <button class="text-green-500 p-3 border rounded-[5px]">INTERVIEW</button>
+                        <button class="text-red-500 p-3 border rounded-[5px]">REJECTED</button>
+                    </div>
+                </div>
+                <div>delete</div>
+
+        `
+        filteredSection.appendChild(div)
+    }
+}
+
+function renderRejected() {
+    filteredSection.innerHTML = ''
+
+    for (let rejected of rejectedList) {
+        let div = document.createElement('div')
+        div.className = 'flex justify-between p-4 bg-white border rounded mb-4'
+        div.innerHTML = `
+                
+                <div>
+                    <h2 class="companyname text-[20px] font-bold">${rejected.companyName}</h2>
+                    <p class="description text-gray-500 text-[16px]">${rejected.description}</p>
+                    <p class="details pt-2 pb-2"></p>
+                    <button class="status bg-gray-200 p-1.5 rounded-[2px]">${rejected.status}</button>
+                    <p class="description2 pt-1.5 pb-1.5">${rejected.description2}</p>
                     <div class="flex gap-3">
                         <button class="text-green-500 p-3 border rounded-[5px]">INTERVIEW</button>
                         <button class="text-red-500 p-3 border rounded-[5px]">REJECTED</button>
