@@ -80,8 +80,12 @@ mainAll.addEventListener('click', function (event) {
         }
         
         rejectedList = rejectedList.filter(item => item.companyName != cardInfo.companyName)
+        
+        if(currentStatus=='btn-rejected'){
+            renderRejected()
+        }
         calculateCount()
-        renderInterview()
+        
     } else if (event.target.classList.contains('btnRejected')) {
         const parentDiv = event.target.parentNode.parentNode;
         const companyName = parentDiv.querySelector('.companyname').innerText;
@@ -105,6 +109,10 @@ mainAll.addEventListener('click', function (event) {
 
 
         interviewList = interviewList.filter(item => item.companyName != cardInfo.companyName)
+        
+        if(currentStatus=='btn-interview'){
+            renderInterview()
+        }
         calculateCount()
     }
 })
@@ -124,11 +132,11 @@ function renderInterview() {
                     <button class="status bg-gray-200 p-1.5 rounded-[2px]">${interview.status}</button>
                     <p class="description2 pt-1.5 pb-1.5">${interview.description2}</p>
                     <div class="flex gap-3">
-                        <button class="text-green-500 p-3 border rounded-[5px]">INTERVIEW</button>
-                        <button class="text-red-500 p-3 border rounded-[5px]">REJECTED</button>
+                        <button class="btnInterview text-green-500 p-3 border rounded-[5px]">INTERVIEW</button>
+                        <button class="btnRejected text-red-500 p-3 border rounded-[5px]">REJECTED</button>
                     </div>
                 </div>
-                <div>delete</div>
+                <div class="btnDelete fa-solid fa-trash"></div>
 
         `
         filteredSection.appendChild(div)
@@ -150,11 +158,11 @@ function renderRejected() {
                     <button class="status bg-gray-200 p-1.5 rounded-[2px]">${rejected.status}</button>
                     <p class="description2 pt-1.5 pb-1.5">${rejected.description2}</p>
                     <div class="flex gap-3">
-                        <button class="text-green-500 p-3 border rounded-[5px]">INTERVIEW</button>
-                        <button class="text-red-500 p-3 border rounded-[5px]">REJECTED</button>
+                        <button class="btnInterview text-green-500 p-3 border rounded-[5px]">INTERVIEW</button>
+                        <button class="btnRejected text-red-500 p-3 border rounded-[5px]">REJECTED</button>
                     </div>
                 </div>
-                <div>delete</div>
+                <div class="btnDelete fa-solid fa-trash" ></div>
 
         `
         filteredSection.appendChild(div)
