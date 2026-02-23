@@ -7,6 +7,8 @@
     <title>Document</title>
     <!-- tailwindcss connect -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- font awesome connected -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="bg-gray-100">
@@ -35,7 +37,7 @@
             <h2 class="text-2xl font-bold">Avialable Jobs</h2>
         </div>
         <div>
-            <p class="">8 Jobs</p>
+            <p id="jobCount">8 Jobs</p>
         </div>
     </div>
     <br>
@@ -46,7 +48,7 @@
             <button onclick="toggleEffect('btn-interview')" id="btn-interview"
                 class="bg-white px-6 py-2 rounded-[5px]">Interview</button>
             <button onclick="toggleEffect('btn-rejected')" id="btn-rejected"
-                class="bg-white px-6 py-2 rounded-[5px]">Recent</button>
+                class="bg-white px-6 py-2 rounded-[5px]">Rejected</button>
         </div>
         <!-- filtered section -->
         <section id="filtered-section" class="hidden w-full px-4 md:w-[80%] md:px-0 mx-auto mt-4 space-y-5">
@@ -69,7 +71,7 @@
                         <button class="btnRejected text-red-500 p-3 border rounded-[5px]">REJECTED</button>
                     </div>
                 </div>
-                <div>delete</div>
+                <div class="cursor-pointer"><i class="btnDelete fa-solid fa-trash"></i></div>
             </div>
 
             <!-- Card 2 -->
@@ -78,7 +80,7 @@
                     <h2 class="companyname text-[20px] font-bold">CloudWave Inc</h2>
                     <p class="description text-gray-500 text-[16px]">React Native Developer</p>
                     <p class="details pt-2 pb-2">Remote • Full time • $5,500 - $7,500</p>
-                    <button class="status bg-gray-200 p-1.5 rounded-[2px]">APPLIED</button>
+                    <button class="status bg-gray-200 p-1.5 rounded-[2px]">NOT APPLIED</button>
                     <p class="description2 pt-1.5 pb-1.5">
                         Develop cross-platform mobile apps used by thousands of daily users.
                     </p>
@@ -88,7 +90,7 @@
                         <button class="btnRejected text-red-500 p-3 border rounded-[5px]">REJECTED</button>
                     </div>
                 </div>
-                <div>delete</div>
+                <div class="cursor-pointer"><i class="btnDelete fa-solid fa-trash"></i></div>
             </div>
 
             <!-- Card 3 -->
@@ -106,7 +108,7 @@
                         <button class="btnRejected text-red-500 p-3 border rounded-[5px]">REJECTED</button>
                     </div>
                 </div>
-                <div>delete</div>
+                <div class="cursor-pointer"><i class="btnDelete fa-solid fa-trash"></i></div>
             </div>
 
             <!-- Card 4 -->
@@ -115,7 +117,7 @@
                     <h2 class="companyname text-[20px] font-bold">PixelCraft Studio</h2>
                     <p class="description text-gray-500 text-[16px]">UI/UX Designer</p>
                     <p class="details pt-2 pb-2">Remote • Contract • $3,000 - $4,500</p>
-                    <button class="status bg-gray-200 p-1.5 rounded-[2px]">APPLIED</button>
+                    <button class="status bg-gray-200 p-1.5 rounded-[2px]">NOT APPLIED</button>
                     <p class="description2 pt-1.5 pb-1.5">
                         Create user-friendly designs and interactive prototypes for mobile apps.
                     </p>
@@ -124,7 +126,7 @@
                         <button class="btnRejected text-red-500 p-3 border rounded-[5px]">REJECTED</button>
                     </div>
                 </div>
-                <div>delete</div>
+                <div class="cursor-pointer"><i class="btnDelete fa-solid fa-trash"></i></div>
             </div>
 
             <!-- Card 5 -->
@@ -142,7 +144,7 @@
                         <button class="btnRejected text-red-500 p-3 border rounded-[5px]">REJECTED</button>
                     </div>
                 </div>
-                <div>delete</div>
+                <div class="cursor-pointer"><i class="btnDelete fa-solid fa-trash"></i></div>
             </div>
 
             <!-- Card 6 -->
@@ -151,7 +153,7 @@
                     <h2 class="companyname text-[20px] font-bold">NextGen Soft</h2>
                     <p class="description text-gray-500 text-[16px]">Full Stack Developer</p>
                     <p class="details pt-2 pb-2">Remote • Full time • $6,500 - $9,000</p>
-                    <button class="status bg-gray-200 p-1.5 rounded-[2px]">APPLIED</button>
+                    <button class="status bg-gray-200 p-1.5 rounded-[2px]">NOT APPLIED</button>
                     <p class="description2 pt-1.5 pb-1.5">
                         Work on end-to-end web applications using MERN stack technologies.
                     </p>
@@ -160,7 +162,7 @@
                         <button class="btnRejected text-red-500 p-3 border rounded-[5px]">REJECTED</button>
                     </div>
                 </div>
-                <div>delete</div>
+                <div class="cursor-pointer"><i class="btnDelete fa-solid fa-trash"></i></div>
             </div>
 
             <!-- Card 7 -->
@@ -178,7 +180,7 @@
                         <button class="btnRejected text-red-500 p-3 border rounded-[5px]">REJECTED</button>
                     </div>
                 </div>
-                <div>delete</div>
+                <div class="cursor-pointer"><i class="btnDelete fa-solid fa-trash"></i></div>
             </div>
 
             <!-- Card 8 -->
@@ -187,7 +189,7 @@
                     <h2 class="companyname text-[20px] font-bold">AI Horizon</h2>
                     <p class="description text-gray-500 text-[16px]">Machine Learning Engineer</p>
                     <p class="details pt-2 pb-2">Remote • Full time • $8,000 - $12,000</p>
-                    <button class="status bg-gray-200 p-1.5 rounded-[2px]">APPLIED</button>
+                    <button class="status bg-gray-200 p-1.5 rounded-[2px]">NOT APPLIED</button>
                     <p class="description2 pt-1.5 pb-1.5">
                         Build and deploy AI models that power real-world intelligent applications.
                     </p>
@@ -196,7 +198,7 @@
                         <button class="btnRejected text-red-500 p-3 border rounded-[5px]">REJECTED</button>
                     </div>
                 </div>
-                <div>delete</div>
+                <div class="cursor-pointer"><i class="btnDelete fa-solid fa-trash"></i></div>
             </div>
         </section>
     </main>

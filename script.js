@@ -15,10 +15,14 @@ let mainAll = document.getElementById("main");
 
 let filteredSection = document.getElementById("filtered-section")
 
+// let totalJobscount = document.getElementById("jobCount")
+
+
 function calculateCount() {
     totalNum.innerText = allBoxParent.children.length;
     interviewNum.innerText = interviewList.length;
     rejectedNum.innerText = rejectedList.length;
+    // totalJobscount.innerText = allBoxParent.children.length;
 }
 calculateCount()
 
@@ -61,12 +65,12 @@ mainAll.addEventListener('click', function (event) {
         const details = parentDiv.querySelector('.details').innerText;
         let status = parentDiv.querySelector('.status').innerText;
         const description2 = parentDiv.querySelector('.description2').innerText;
-        parentDiv.querySelector('.status').innerText = 'Interviewed'
+        parentDiv.querySelector('.status').innerText = 'INTERVIEWED'
         const cardInfo = {
             companyName,
             description,
             details,
-            status: 'Interviewed',
+            status: 'INTERVIEWED',
             description2
         }
 
@@ -85,12 +89,12 @@ mainAll.addEventListener('click', function (event) {
         const details = parentDiv.querySelector('.details').innerText;
         let status = parentDiv.querySelector('.status').innerText;
         const description2 = parentDiv.querySelector('.description2').innerText;
-        parentDiv.querySelector('.status').innerText = 'Rejected'
+        parentDiv.querySelector('.status').innerText = 'REJECTED'
         const cardInfo = {
             companyName,
             description,
             details,
-            status: 'Rejected',
+            status: 'REJECTED',
             description2
         }
 
@@ -156,3 +160,35 @@ function renderRejected() {
         filteredSection.appendChild(div)
     }
 }
+
+
+
+function updateJobCount() {
+    const totalJobs = allBoxParent.children.length;
+    document.getElementById("jobCount").innerText = `${totalJobs} Jobs`;
+}
+
+document.addEventListener('click', function (event) {
+
+    if (event.target.classList.contains('btnDelete')) {
+
+        const card = event.target.closest('.flex');
+        const companyName = card.querySelector('.companyname').innerText;
+
+        card.remove();
+
+        interviewList = interviewList.filter(
+            item => item.companyName !== companyName
+        );
+
+        rejectedList = rejectedList.filter(
+            item => item.companyName !== companyName
+        );
+
+        calculateCount();
+        updateJobCount();
+    }
+
+});
+
+updateJobCount();
