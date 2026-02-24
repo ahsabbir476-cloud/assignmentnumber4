@@ -75,6 +75,10 @@ mainAll.addEventListener('click', function (event) {
         let status = parentDiv.querySelector('.status').innerText;
         const description2 = parentDiv.querySelector('.description2').innerText;
         parentDiv.querySelector('.status').innerText = 'INTERVIEWED'
+        // 🔥 color change
+        // parentDiv.classList.remove('border-red-500');
+        // parentDiv.classList.add('border-green-500');
+        
         const cardInfo = {
             companyName,
             description,
@@ -102,6 +106,10 @@ mainAll.addEventListener('click', function (event) {
         let status = parentDiv.querySelector('.status').innerText;
         const description2 = parentDiv.querySelector('.description2').innerText;
         parentDiv.querySelector('.status').innerText = 'REJECTED'
+
+        // parentDiv.classList.remove('border-green-500');
+        // parentDiv.classList.add('border-red-500');
+
         const cardInfo = {
             companyName,
             description,
@@ -138,21 +146,21 @@ function renderInterview() {
 
     for (let interview of interviewList) {
         let div = document.createElement('div')
-        div.className = 'flex justify-between p-4 bg-white border rounded mb-4'
+        div.className = 'flex flex-col md:flex-row md:justify-between gap-4 p-5 bg-white rounded-lg mb-4 border-l-4 border-green-500 shadow-sm hover:shadow-md transition'
         div.innerHTML = `
                 
                 <div>
-                    <h2 class="companyname text-[20px] font-bold">${interview.companyName}</h2>
-                    <p class="description text-gray-500 text-[16px]">${interview.description}</p>
-                    <p class="details pt-2 pb-2">${interview.details}</p>
-                    <button class="status bg-gray-200 p-1.5 rounded-[2px]">${interview.status}</button>
-                    <p class="description2 pt-1.5 pb-1.5">${interview.description2}</p>
+                    <h2 class="companyname text-[20px] font-bold text-gray-900">${interview.companyName}</h2>
+                    <p class="description text-gray-700 text-[16px]">${interview.description}</p>
+                    <p class="details pt-2 pb-2 text-gray-500 text-sm">${interview.details}</p>
+                    <button class="status bg-gray-300 text-gray-700 px-3 py-1 rounded text-sm font-semibold">${interview.status}</button>
+                    <p class="description2 pt-3 pb-3 text-sm text-gray-500">${interview.description2}</p>
                     <div class="flex gap-3">
-                        <button class="btnInterview text-green-500 p-3 border rounded-[5px]">INTERVIEW</button>
-                        <button class="btnRejected text-red-500 p-3 border rounded-[5px]">REJECTED</button>
+                        <button class="btnInterview text-green-600 border border-green-500 px-4 py-2 rounded-md hover:bg-green-500 hover:text-white transition font-bold">INTERVIEW</button>
+                        <button class="btnRejected text-red-500 border border-red-500 px-4 py-2 rounded-md hover:bg-red-500 hover:text-white transition font-bold">REJECTED</button>
                     </div>
                 </div>
-                <div class="btnDelete fa-solid fa-trash"></div>
+                <div class="btnDelete fa-solid fa-trash text-xl"></div>
 
         `
         filteredSection.appendChild(div)
@@ -172,21 +180,21 @@ function renderRejected() {
     toggleEmptyState(rejectedList);
     for (let rejected of rejectedList) {
         let div = document.createElement('div')
-        div.className = 'flex justify-between p-4 bg-white border rounded mb-4'
+        div.className = 'flex flex-col md:flex-row md:justify-between gap-4 p-5 bg-white rounded-lg mb-4 border-l-4 border-green-500 shadow-sm hover:shadow-md transition'
         div.innerHTML = `
                 
                 <div>
-                    <h2 class="companyname text-[20px] font-bold">${rejected.companyName}</h2>
-                    <p class="description text-gray-500 text-[16px]">${rejected.description}</p>
-                    <p class="details pt-2 pb-2">${rejected.details}</p>
-                    <button class="status bg-gray-200 p-1.5 rounded-[2px]">${rejected.status}</button>
-                    <p class="description2 pt-1.5 pb-1.5">${rejected.description2}</p>
+                    <h2 class="companyname text-[20px] font-bold text-gray-900">${rejected.companyName}</h2>
+                    <p class="description text-gray-700 text-[16px]">${rejected.description}</p>
+                    <p class="details pt-2 pb-2 text-gray-500 text-sm">${rejected.details}</p>
+                    <button class="status bg-gray-300 text-gray-700 px-3 py-1 rounded text-sm font-semibold">${rejected.status}</button>
+                    <p class="description2 pt-3 pb-3 text-sm text-gray-500">${rejected.description2}</p>
                     <div class="flex gap-3">
-                        <button class="btnInterview text-green-500 p-3 border rounded-[5px]">INTERVIEW</button>
-                        <button class="btnRejected text-red-500 p-3 border rounded-[5px]">REJECTED</button>
+                        <button class="btnInterview text-green-600 border border-green-500 px-4 py-2 rounded-md hover:bg-green-500 hover:text-white transition font-bold">INTERVIEW</button>
+                        <button class="btnRejected text-red-500 border border-red-500 px-4 py-2 rounded-md hover:bg-red-500 hover:text-white transition font-bold">REJECTED</button>
                     </div>
                 </div>
-                <div class="btnDelete fa-solid fa-trash" ></div>
+                <div class="btnDelete fa-solid fa-trash text-xl" ></div>
 
         `
         filteredSection.appendChild(div)
